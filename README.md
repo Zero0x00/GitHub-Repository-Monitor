@@ -352,3 +352,38 @@ Connect with the creator on LinkedIn
 - [Mohd Arif](https://www.linkedin.com/in/mohd--arif)
 - [Seedon](https://www.linkedin.com/in/seedon/)
 
+### Workflow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant github_monitor.py
+    participant GitHub API
+    participant Config File
+    participant Repository Lists
+    participant Output Channels
+
+    User->>github_monitor.py: Execute script
+    github_monitor.py->>Config File: Load configuration
+    github_monitor.py->>GitHub API: Validate token and organization
+    alt Validation failed
+        github_monitor.py->>User: Display error
+    else Validation successful
+        github_monitor.py->>Repository Lists: Backup existing files
+        github_monitor.py->>GitHub API: Fetch repositories
+        GitHub API-->>github_monitor.py: Return repositories
+        github_monitor.py->>Repository Lists: Save current repository list
+        github_monitor.py->>Repository Lists: Find previous repository list
+        alt Previous list exists
+            github_monitor.py->>Repository Lists: Load previous repository list
+            github_monitor.py->>github_monitor.py: Compare current and previous lists
+            github_monitor.py->>Output Channels: Generate terminal report
+            alt Slack enabled
+                github_monitor.py->>Output Channels: Send Slack notification
+            end
+        else No previous list
+            github_monitor.py->>Output Channels: Generate initial repository report
+        end
+        github_monitor.py->>Output Channels: Log activities
+    end
+```
