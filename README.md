@@ -333,7 +333,7 @@ The setup utility validates your token during configuration to ensure it works c
 
 ## 📜 License
 
-MIT License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
@@ -344,3 +344,11 @@ Contributions, issues, and feature requests are welcome!
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## 📱 Contact
+
+Connect with the creator on LinkedIn
+
+- [Mohd Arif](https://www.linkedin.com/in/mohd--arif)
+- [Seedon](https://www.linkedin.com/in/seedon/)
+
